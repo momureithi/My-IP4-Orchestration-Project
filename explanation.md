@@ -26,4 +26,7 @@ EXPOSE 3000
 CMD ["npm", "start"]
 
 # Screenshot of the deployed image on DockerHub, clearly showing the version of the image
-![image](https://github.com/momureithi/My-Week-4-IP-2-Project/assets/43198305/cc49ab44-3819-4337-8d7d-18d48bcc05d2)
+![image](https://github.com/momureithi/My-Week-4-IP-2-Project/assets/43198305/ecef511e-a495-48a1-a995-cf9fe51b939c)
+
+# Screenshot of the added product
+![image](https://github.com/momureithi/My-Week-4-IP-2-Project/assets/43198305/e4bb1025-88f6-482f-94b4-9999251367b2)
