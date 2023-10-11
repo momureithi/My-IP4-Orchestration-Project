@@ -1,12 +1,10 @@
-# Base Images
+## Base Image
 
-- Web application container - I chose to use the latest Node.js image, `node:14-alpine`, as the base image for running Node.js applications and provides a stable environment.
-
-- For the MongoDB database container, I used the official MongoDB image, `mongo:latest`. It already includes the necessary setup for a MongoDB database server.
+- Web application container - I chose to use `node:14-alpine`, as the base image for running the application.
 
 ## Dockerfile
 
-# Use the official Node.js image as the base image to minimize the size of the image
+# Use the Alpine version to minimize the size of the image
 FROM node:14-alpine
 
 # Set the working directory inside the container
@@ -26,3 +24,6 @@ EXPOSE 3000
 
 # Define the command to start the application
 CMD ["npm", "start"]
+
+# Screenshot of the deployed image on DockerHub, clearly showing the version of the image
+![image](https://github.com/momureithi/My-Week-4-IP-2-Project/assets/43198305/cc49ab44-3819-4337-8d7d-18d48bcc05d2)
