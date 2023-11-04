@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  frontend:
+    image: momureithi/my-ip4-frontend-image:0.1.0
+    build:
+      context: ./client
+    container-name: my-ip4-frontend-container
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    volumes:
+      - ./client:/app/client/
+    depends_on:
+      - backend
+    networks:
+      - my-ip4-network
+
+  backend:
+    image: momureithi/my-ip4-backend-image:0.1.0
+    build:
+      context: ./backend
+    container-name: my-ip4-backend-container
+    ports:
+      - '5001:5001'
+    volumes:
+      - ./backend:/app/backend/
+    environment:
+      MONGO_URI: mongodb://mongo:27017/my-ip4-database
+    depends_on:
+      - mongo
+    networks:
+      - my-ip4-network
+
+  mongo:
+    image: mongo:latest
+    container_name: my-ip4-database
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./mongo-data:/data/db
+    networks:
+      - my-ip4-network
+
+networks:
+  network:
+    name: my-ip4-network
+    driver: bridge
+
+volumes:
+  mongo-data: ./mongo-data:/data/db
+  backend: ./backend:/app/backend/
+  client: ./client:/app/client/

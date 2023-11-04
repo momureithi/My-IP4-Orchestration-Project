@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: my-ip4-database
+spec:
+  serviceName: my-ip4-database
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-ip4-database
+  template:
+    metadata:
+      labels:
+        app: my-ip4-database
+    spec:
+      containers:
+      - name: my-ip4-database
+        image: mydatabase:v1.0
+        ports:
+        - containerPort: 27017

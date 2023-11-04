@@ -1,0 +1,31 @@
+# frontend service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-ip4-frontend-service
+  namespace: orchestration
+spec:
+  selector:
+    app: my-ip4-deployment
+  ports:
+  - protocol: TCP
+    port: 3000
+  type: LoadBalancer
+
+---
+
+# backend service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-ip4-backend-service
+  namespace: orchestration
+spec:
+  selector:
+    app: my-ip4-deployment
+  ports:
+  - protocol: TCP
+    port: 5001
+  type: LoadBalancer

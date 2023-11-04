@@ -1,0 +1,75 @@
+# frontend deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-ip4-frontend-deployment
+  namespace: orchestration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-ip4-frontend-deployment
+  template:
+    metadata:
+      labels:
+        app: my-ip4-frontend-deployment
+    spec:
+      containers:
+      - name: my-ip4-frontend-container
+        image: momureithi/my-ip4-frontend-image:0.1.0
+        resources:
+          limits:
+            memory: "50Mi"
+            cpu: "75m"
+          requests:
+            memory: "25Mi"
+            cpu: "50m"
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: my-ip4-frontend-storage
+          mountPath: /usr/share/frontend/html
+      volumes:
+      - name: my-ip4-frontend-storage
+        persistentVolumeClaim:
+          claimName: my-ip4-pvc-claim
+
+---
+
+# backend deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-ip4-backend-deployment
+  namespace: orchestration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-ip4-backend-deployment
+  template:
+    metadata:
+      labels:
+        app: my-ip4-backend-deployment
+    spec:
+      containers:
+      - name: my-ip4-backend-container
+        image: momureithi/my-ip4-backend-image:0.1.0
+        resources:
+          limits:
+            memory: "50Mi"
+            cpu: "75m"
+          requests:
+            memory: "25Mi"
+            cpu: "50m"
+        ports:
+        - containerPort: 5001
+        volumeMounts:
+        - name: my-ip4-backend-storage
+          mountPath: /usr/share/backend/html
+      volumes:
+      - name: my-ip4-backend-storage
+        persistentVolumeClaim:
+          claimName: my-ip4-pvc-claim

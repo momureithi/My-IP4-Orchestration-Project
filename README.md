@@ -1,23 +1,19 @@
 # Requirements
-Make sure that you have the following installed:
-- [node](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04) 
-- npm 
-- [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) and start the mongodb service with `sudo service mongod start`
 
-## Navigate to the Client Folder 
- `cd client`
+#### Clone the repository
 
-## Run the folllowing command to install the dependencies 
- `npm install`
+```git clone https://github.com/momureithi/My-IP4-Orchestration-Project```
 
-## Run the folllowing to start the app
- `npm start`
+#### Switch to the `My-IP4-Orchestration-Project` directory
 
-## Open a new terminal and run the same commands in the backend folder
- `cd ../backend`
+```cd My-IP4-Orchestration-Project```
 
- `npm install`
+#### Automate deployment of the Yolomy e-Commerce web application using Ansible and Vagrant
 
- `npm start`
+ ```vagrant up```
 
- ### Go ahead a nd add a product (note that the price field only takes a numeric input)
+#### Run the Yolomy e-Commerce web application from the browser
+
+```http://localhost:3000```
+
+#### Go ahead and add a product (note that the price field only takes a numeric input)
