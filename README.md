@@ -1,4 +1,4 @@
-# Git Workflow
+## Git Workflow
 
 #### Clone the repository
 
@@ -60,10 +60,14 @@
 
 ![Alt text](image.png)
 
-#### Docker image tag naming standards and semver:
+#### Docker images tag naming standards and semver:
 
 ```docker build -t momureithi/my-ip4-frontend-image:v0.1.0 .```
+
+```docker build -t momureithi/my-ip4-backend-image:v0.1.0 .```
 
 #### Push the image to a container registry:
 
 ```docker push momureithi/my-ip4-frontend-image:v0.1.0```
+
+```docker push momureithi/my-ip4-backend-image:v0.1.0```

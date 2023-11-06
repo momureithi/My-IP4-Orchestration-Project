@@ -31,7 +31,7 @@ spec:
         - name: my-ip4-frontend-storage
           mountPath: /usr/share/frontend/html
       volumes:
-      - name: my-ip4-frontend-storage
+      - name: my-ip4-pv-volume
         persistentVolumeClaim:
           claimName: my-ip4-pvc-claim
 
@@ -70,6 +70,6 @@ spec:
         - name: my-ip4-backend-storage
           mountPath: /usr/share/backend/html
       volumes:
-      - name: my-ip4-backend-storage
+      - name: my-ip4-pv-volume
         persistentVolumeClaim:
           claimName: my-ip4-pvc-claim
