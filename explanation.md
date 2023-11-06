@@ -1,32 +1,44 @@
-## Base Image
+# Git Workflow
 
-- Web application container - I chose to use `node:14-alpine`, as the base image for running the application.
+#### Clone the repository
 
-## Dockerfile
+```git clone https://github.com/momureithi/My-IP4-Orchestration-Project```
 
-# Use the Alpine version to minimize the size of the image
-FROM node:14-alpine
+#### Switch to the `My-IP4-Orchestration-Project` directory
 
-# Set the working directory inside the container
-WORKDIR /app
+```cd My-IP4-Orchestration-Project```
 
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
+#### Create directory to store the manifest files
 
-# Install application dependencies
-RUN npm install
+```mkdir manifests```
 
-# Copy the rest of the application files
-COPY . .
+#### Add required manifests to the created directory
 
-# Expose port 3000 for the Node.js application
-EXPOSE 3000
+```touch deployment.yaml```
+```touch pv.yaml```
+```touch pvc.yaml```
+```touch service.yaml```
 
-# Define the command to start the application
-CMD ["npm", "start"]
 
-# Screenshot of the deployed image on DockerHub, clearly showing the version of the image
-![image](https://github.com/momureithi/My-Week-4-IP-2-Project/assets/43198305/ecef511e-a495-48a1-a995-cf9fe51b939c)
+#### Commit changes and push to the remote repository:
 
-# Screenshot of the added product
-![image](https://github.com/momureithi/My-Week-4-IP-2-Project/assets/43198305/e4bb1025-88f6-482f-94b4-9999251367b2)
+```git add .```
+```git commit -m``` "Add manifests"
+```git push origin master```
+
+#### Deploy application using kubectl:
+
+```kubectl apply -f deployment.yaml```
+```kubectl apply -f pv.yaml```
+```kubectl apply -f pvc.yaml```
+```kubectl apply -f service.yaml```
+
+Access your application at the specified IP address and port.
+
+#### Docker image tag naming standards and semver:
+
+```docker build -t momureithi/my-ip4-frontend-image:v0.1.0 .```
+
+#### Push the image to a container registry:
+
+```docker push momureithi/my-ip4-frontend-image:v0.1.0```

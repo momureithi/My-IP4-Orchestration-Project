@@ -1,4 +1,4 @@
-# Requirements
+# Git Workflow
 
 #### Clone the repository
 
@@ -8,12 +8,35 @@
 
 ```cd My-IP4-Orchestration-Project```
 
-#### Automate deployment of the Yolomy e-Commerce web application using Ansible and Vagrant
+#### Create directory to store the manifest files
 
- ```vagrant up```
+```mkdir manifests```
 
-#### Run the Yolomy e-Commerce web application from the browser
+#### Add required manifests to the created directory
 
-```http://localhost:3000```
+```touch deployment.yaml```
+```touch pv.yaml```
+```touch pvc.yaml```
+```touch service.yaml```
 
-#### Go ahead and add a product (note that the price field only takes a numeric input)
+
+#### Commit changes and push to the remote repository:
+
+```git add .```
+```git commit -m``` "Add manifests"
+```git push origin master```
+
+#### Deploy application using kubectl:
+
+```kubectl apply -f deployment.yaml```
+```kubectl apply -f pv.yaml```
+```kubectl apply -f pvc.yaml```
+```kubectl apply -f service.yaml```
+
+#### Docker image tag naming standards and semver:
+
+```docker build -t momureithi/my-ip4-frontend-image:v0.1.0 .```
+
+#### Push the image to a container registry:
+
+```docker push momureithi/my-ip4-frontend-image:v0.1.0```
