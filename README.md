@@ -12,6 +12,10 @@
 
 ```mkdir manifests```
 
+#### Create namespace:
+
+```kubectl create namespace orchestration```
+
 #### Add required manifests to the created directory
 
 ```touch deployment.yaml```
@@ -32,6 +36,22 @@
 ```kubectl apply -f pv.yaml```
 ```kubectl apply -f pvc.yaml```
 ```kubectl apply -f service.yaml```
+
+#### Confirm successful implementation:
+
+```kubectl create namespace orchestration```
+
+```kubectl get namespaces```
+
+```kubectl get deployments -n orchestration```
+
+```kubectl get pv```
+
+```kubectl get pvc```
+
+```kubectl get svc -n orchestration```
+
+```kubectl get pods -n orchestration```
 
 ![Alt text](image.png)
 
