@@ -33,6 +33,8 @@
 ```kubectl apply -f pvc.yaml```
 ```kubectl apply -f service.yaml```
 
+![Alt text](image.png)
+
 #### Docker image tag naming standards and semver:
 
 ```docker build -t momureithi/my-ip4-frontend-image:v0.1.0 .```
